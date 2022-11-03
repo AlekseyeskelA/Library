@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-with" />
+    <title>Возврат книги</title>
+</head>
+<body>
+    <div>
+        <h3>Возврат книги</h3>
+        <form method="post" action="">
+            <label value="@ViewBag.ISBN" name="ISBN" />
+            <table>
+                <tr>
+                    <td><p>Вернуть?</p></td>
+                </tr>
+                <tr><td><input type="submit" value="Вернуть книгу" /></td><td></td></tr>
+            </table>
+            <a href="/Home/Index">Назад</a>
+        </form>
+    </div>
+</body>
+</html>

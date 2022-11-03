@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+</head>
+<body>
+    <div>
+        <h3>Список выданных книг</h3>
+        <table>
+            <tr>
+                <!--Заголовки таблицы:-->
+                <td>Имя</td>
+                <td>ISBN</td>
+                <td>Кол-во</td>
+                <td></td>
+            </tr>
+
+            <!--Формируем таблицу читателей и взятых ими книг:-->
+            @foreach (var reader in ViewBag.BooksOnHands)
+            {
+                <tr>
+                    <td>@reader.Name</td>
+                    @{var bList = reader.TakenBooks;}
+                    @foreach (var book in bList)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>@book.ISBN</td>
+                            <td>@book.Num</td>
+                            <td>@Html.ActionLink("Вернуть", "Return", "Home", new Models.ReaderTemp { Name = reader.Name, ISBN = book.ISBN })</td>
+                        </tr>
+                    }
+                </tr>
+            }
+        </table>
+            <a href="/Home/Index/">Назад</a>
+    </div>
+</body>
+</html>

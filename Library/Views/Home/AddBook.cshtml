@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device=width"/>
+    <title>Добавление книги</title>
+</head>
+<body>
+    <div>
+        <h3>Форма выдачи книги</h3>
+        <form method="post" action="">
+            <table>
+                <tr>
+                    <!--Значения атрибутов name соответствует модели Book. После нажатия на кнопку и
+        отправки запроса, приложение получает значения этих полей, MVC считает эти
+        значения значениями свойств модели и производит связывание:-->
+                    <td>Идентификатор ISBN</td>
+                    <td><input type="text" name="ISBN" /></td>
+                </tr>
+                <tr>
+                    <td>Название</td>
+                    <td><input type="text" name="Name" /></td>
+                </tr>
+                <tr>
+                    <td>Автор</td>
+                    <td><input type="text" name="Author" /></td>
+                </tr>
+                <tr>
+                    <td>Издательство</td>
+                    <td><input type="text" name="Publisher" /></td>
+                </tr>
+                <tr>
+                    <td>Год</td>
+                    <td><input type="text" name="Year" /></td>
+                </tr>
+                <tr>
+                    <td>Количество</td>
+                    <td><input type="text" name="Num" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Добавить книгу" /></td>
+                    <!--После нажания на эту кнопку формируется POST-запрос к тому же мотоду действия, который привёл к появлению этой формы (AddBook(Book book)),
+        и данные, введённые пользователем, найдём в аргуенте Book book.-->
+                </tr>
+            </table>
+            <a href="/Home/Index/">Назад</a>
+        </form>
+    </div>
+</body>
+</html>

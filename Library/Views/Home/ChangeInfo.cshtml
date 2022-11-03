@@ -1,0 +1,57 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Изменение данных книги</title>
+</head>
+<body>
+    <div>
+        <h3>Изменение данных книги</h3>
+        <form method="post" action="ChangeInfoPOST">
+            <!--То, что форма отправляет POST запрос, мы определили явно.-->
+            <table>
+                <tr>
+                    <!--Значения атрибутов name соответствует модели Book. После нажатия на кнопку и
+    отправки запроса, приложение получает значения этих полей, MVC считает эти
+    значения значениями свойств модели и производит связывание:-->
+                    <td>Идентификатор ISBN:</td>
+                    <td>@ViewBag.Book.ISBN</td>
+                    <td><input type="hidden" value="@ViewBag.Book.ISBN" name="ISBN" /></td>
+                </tr>
+                <tr>
+                    <td>Название</td>
+                    <td><input type="text" value="@ViewBag.Book.Name" name="Name" /></td>
+                </tr>
+                <tr>
+                    <td>Автор</td>
+                    <td><input type="text" value="@ViewBag.Book.Author" name="Author" /></td>
+                </tr>
+                <tr>
+                    <td>Издательство</td>
+                    <td><input type="text" value="@ViewBag.Book.Publisher" name="Publisher" /></td>
+                </tr>
+                <tr>
+                    <td>Год</td>
+                    <td><input type="text" value="@ViewBag.Book.Year" name="Year" /></td>
+                </tr>
+                <tr>
+                    <td>Количество</td>
+                    <td><input type="text" value="@ViewBag.Book.Num" name="Num" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Изменить" /></td>
+                    <!--После нажания на эту кнопку формируется POST-запрос к тому же мотоду действия, который привёл к появлению этой формы (AddBook(Book book)),
+        и данные, введённые пользователем, найдём в аргуенте Book book.-->
+                </tr>
+            </table>
+            <a href="/Home/Index/">Назад</a>
+        </form>
+    </div>
+</body>
+</html>

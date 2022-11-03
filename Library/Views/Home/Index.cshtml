@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;                                      <!--Не используем общий макет.-->
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+</head>
+<body>
+    <div>
+        <h3>Учёт книг</h3>
+        <form method="post" action="">
+            <table>
+                <!--Заголовки столбцов:-->
+                <tr>
+                    <td><p>ISBN</p></td>
+                    <td><p>Название книги</p></td>
+                    <td><p>Автор</p></td>
+                    <td><p>Издательство</p></td>
+                    <td><p>Год</p></td>
+                    <td><p>Кол-во</p></td>
+                </tr>
+                <!--Поля для фильтрации:-->
+                <tr>
+                    <td><input type="text" value="@ViewBag.Filtres.ISBN" name="ISBN" /></td>
+                    <td><input type="text" value="@ViewBag.Filtres.Name" name="Name" /></td>
+                    <td><input type="text" value="@ViewBag.Filtres.Author" name="Author" /></td>
+                    <td><input type="text" value="@ViewBag.Filtres.Publisher" name="Publisher" /></td>
+                    <td><input type="text" value="@ViewBag.Filtres.Year" name="Year" /></td>
+                    <td><input type="text" value="@ViewBag.Filtres.Num" name="Num" /></td>
+                    <td><input type="submit" value="Применить фильтр" /></td>
+
+                    <!--Очистка фильтра по команде:-->
+                    <td>@Html.ActionLink("Очистить фильтр", "Index", "Home", new Models.Book { ISBN = null, Name = null, Author = null, Publisher = null, Year = null, Num = null })</td>
+                </tr>
+
+
+                @foreach (var book in ViewBag.Books)
+                {
+                    <tr>
+                        <td>@book.ISBN</td>
+                        <td>@book.Name</td>
+                        <td>@book.Author</td>
+                        <td>@book.Publisher</td>
+                        <td>@book.Year</td>
+                        <td>@book.Num</td>
+                        <td>@Html.ActionLink("Изменить данные", "ChangeInfo", "Home", (Models.Book)book)</td>
+                        <td>@Html.ActionLink("Удалить", "Delete", "Home", (Models.Book)book)</td>
+                        <td><a href="/Home/Get/@book.ISBN">Выдать книгу</a></td>
+                    </tr>
+                }
+                <tr></tr>
+            </table>
+        </form>
+        <a href="/Home/AddBook/">Добавить книгу</a>
+        <a href="/Home/UsingBooks/">Список выданных книг</a>
+    </div>
+</body>
+</html>

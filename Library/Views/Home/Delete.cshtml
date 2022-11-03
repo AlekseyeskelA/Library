@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-with" />
+    <title>Удаление книги</title>
+</head>
+<body>
+    <div>
+        <h3>Удаление книги</h3>
+        <form method="post" action="">
+
+            <input type="hidden" value="@ViewBag.Book.ISBN" name="ISBN" />        <!--Скрытый элемент. В него передаётся ISBN, переданный в объекте ViewBag. Потом этот ISBN передаётся в метод Delete().-->
+            <table>
+                <tr>
+                    <td><p>ISBN</p></td>
+                    <td><p>Название книги</p></td>
+                    <td><p>Автор</p></td>
+                    <td><p>Издательство</p></td>
+                    <td><p>Год</p></td>
+                    <td><p>Кол-во</p></td>
+                </tr>
+                <tr>
+                    <td>@ViewBag.Book.ISBN</td>
+                    <td>@ViewBag.Book.Name</td>
+                    <td>@ViewBag.Book.Author</td>
+                    <td>@ViewBag.Book.Publisher</td>
+                    <td>@ViewBag.Book.Year</td>
+                    <td>@ViewBag.Book.Num</td>
+                </tr>
+                <tr>
+                    <td><p>Удалить?</p></td>
+                </tr>
+                <tr><td><input type="submit" value="Удалить книгу" /></td><td></td></tr>
+            </table>
+            <a href="/Home/Index">Назад</a>
+        </form>
+    </div>
+</body>
+</html>
